@@ -29,19 +29,21 @@ namespace HealthCheckMonitor.Controllers
         var userIdentity = new ClaimsIdentity(claims, "login");
 
         ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
-        await HttpContext.SignInAsync(principal);
+       await  HttpContext.SignInAsync(principal);
 
-        //Just redirect to our index after logging in. 
-        return RedirectToAction("Index", "Home");
+
+        return RedirectToAction(nameof(HomeController.Index),"Home");
+
       }
       return View();
     }
-
+    [HttpPost]
     public async Task<IActionResult> LogOut()
     {
       await HttpContext.SignOutAsync();
+ 
 
-      return RedirectToAction("Index");
+      return RedirectToAction("Login", "Account");
     }
 
     private bool LoginUser(string username, string password)

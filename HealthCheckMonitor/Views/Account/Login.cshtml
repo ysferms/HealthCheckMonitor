@@ -30,20 +30,49 @@
     <div class="container">
         <h2>Giriş</h2>
 
-        <form action="/Account/Login" method="post">
+        <form action="@Url.Action("Loginas","Account")" method="post">
             <div class="form-group">
                 <label>Kullanıcı Adı</label>
-                <input type="text" class="form-control" name="Username" value="" />
+                <input type="text" class="form-control" id="Username" name="Username" value="" />
             </div>
             <div class="form-group">
                 <label>Şifre</label>
-                <input type="password" name="Password" class="form-control" value="" />
+                <input type="password" name="Password" id="Password" class="form-control" value="" />
             </div>
             <div class="form-group">
-                <input type="submit" class="btn btn-primary" name="name" value="Giriş" />
+                <input type="submit" class="btn btn-primary" id="loginButton" name="name" value="Giriş" />
             </div>
 
         </form>
     </div>
 </body>
 </html>
+
+@*<script type="text/javascript">
+    $(document).ready(function () {
+        $("#loginButton").click(function () {
+
+           var username = $('#Username').val();
+           var password = $('#Password').val();
+           var LoginModel = {};
+           LoginModel.Username = username;
+           LoginModel.Password = password;
+
+
+
+            $.ajax({
+                url: '@Url.Action("Loginas","Account")',
+                type: 'POST',
+                dataType: 'json',
+                data: { loginModel:LoginModel },
+                success: function (data) {
+                   window.location.href = "https://localhost:44389/Home/Index";
+
+                },
+                error: function (hata) {
+
+                }
+            });
+        });
+    });
+</script>*@

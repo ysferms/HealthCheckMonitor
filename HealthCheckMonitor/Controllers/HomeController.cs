@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using HealthCheckMonitor.Models;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace HealthCheckMonitor.Controllers
 {
@@ -14,6 +15,8 @@ namespace HealthCheckMonitor.Controllers
     [Authorize]
     public IActionResult Index()
     {
+      var name = User.Claims.Where(c => c.Type == ClaimTypes.Name)
+              .Select(c => c.Value).SingleOrDefault();
       return View();
     }
 
