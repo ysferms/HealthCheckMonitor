@@ -32,7 +32,8 @@ namespace HealthCheckMonitor
               options.CheckConsentNeeded = context => true;
         options.MinimumSameSitePolicy = SameSiteMode.None;
       });
-
+      //services.AddScoped<IUserRepository, UserRepository>();
+    
 
       services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
       //services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
@@ -63,6 +64,8 @@ namespace HealthCheckMonitor
       app.UseHttpsRedirection();
       app.UseStaticFiles();
       app.UseCookiePolicy();
+
+
 
       app.UseMvc(routes =>
       {

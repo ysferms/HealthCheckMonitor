@@ -44,35 +44,36 @@
             </div>
 
         </form>
+        <a href="/Account/Register"  id="loginButton" name="name">Kayıt Ol</a>
     </div>
 </body>
 </html>
 
 @*<script type="text/javascript">
-    $(document).ready(function () {
-        $("#loginButton").click(function () {
+        $(document).ready(function () {
+            $("#loginButton").click(function () {
 
-           var username = $('#Username').val();
-           var password = $('#Password').val();
-           var LoginModel = {};
-           LoginModel.Username = username;
-           LoginModel.Password = password;
+               var username = $('#Username').val();
+               var password = $('#Password').val();
+               var LoginModel = {};
+               LoginModel.Username = username;
+               LoginModel.Password = password;
 
 
 
-            $.ajax({
-                url: '@Url.Action("Loginas","Account")',
-                type: 'POST',
-                dataType: 'json',
-                data: { loginModel:LoginModel },
-                success: function (data) {
-                   window.location.href = "https://localhost:44389/Home/Index";
+                $.ajax({
+                    url: '@Url.Action("Loginas","Account")',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: { loginModel:LoginModel },
+                    success: function (data) {
+                       window.location.href = "https://localhost:44389/Home/Index";
 
-                },
-                error: function (hata) {
+                    },
+                    error: function (hata) {
 
-                }
+                    }
+                });
             });
         });
-    });
-</script>*@
+    </script>*@

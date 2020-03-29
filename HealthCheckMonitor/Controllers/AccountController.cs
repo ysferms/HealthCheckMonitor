@@ -29,10 +29,10 @@ namespace HealthCheckMonitor.Controllers
         var userIdentity = new ClaimsIdentity(claims, "login");
 
         ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
-       await  HttpContext.SignInAsync(principal);
+        await HttpContext.SignInAsync(principal);
 
 
-        return RedirectToAction(nameof(HomeController.Index),"Home");
+        return RedirectToAction(nameof(HomeController.Index), "Home");
 
       }
       return View();
@@ -41,11 +41,10 @@ namespace HealthCheckMonitor.Controllers
     public async Task<IActionResult> LogOut()
     {
       await HttpContext.SignOutAsync();
- 
+
 
       return RedirectToAction("Login", "Account");
     }
-
     private bool LoginUser(string username, string password)
     {
 
@@ -59,5 +58,19 @@ namespace HealthCheckMonitor.Controllers
       }
 
     }
+
+    public IActionResult Register()
+    {
+      return View();
+    }
+    
+    [HttpPost]
+    public IActionResult Register(RegisterModel registerModel)
+    {
+
+      return RedirectToAction(nameof(AccountController.Login), "Account");
+    }
+
+
   }
 }
